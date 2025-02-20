@@ -42,7 +42,7 @@ class JCCI(object):
         # 已有分析结果
         if os.path.exists(cci_file_path):
             logging.info('Has analyze result, skip!')
-            with open(cci_file_path, 'r') as read:
+            with open(cci_file_path, 'r', encoding='utf-8') as read:
                 result = read.read()
                 result_json = json.loads(result)
                 print(result, flush=True)
@@ -690,7 +690,7 @@ class JCCI(object):
         }
         print(json.dumps(result), flush=True)
         print(f'Impacted api list: {result["impacted_api_list"]}', flush=True)
-        with open(self.cci_filepath, 'w') as w:
+        with open(self.cci_filepath, 'w', encoding='utf-8') as w:
             w.write(json.dumps(result, ensure_ascii=False))
         logging.info(f'Generating cci result file success, location: {self.cci_filepath}')
 
